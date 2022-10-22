@@ -17,8 +17,8 @@ class Withdraw extends React.Component {
                     <label>
                         Amount to withdraw:
                         <input type="number" name="withdraw" />
-                    </label>
-                    <input type="submit" value="Withdraw" />
+                    </label>  
+                    <button>Withdraw</button> 
                 </form>
             </div>
           );
