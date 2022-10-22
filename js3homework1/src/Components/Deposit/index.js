@@ -5,6 +5,8 @@ import React from 'react';
 class Deposit extends React.Component {
 
 
+
+
     render() {
       return (
         <div>
@@ -13,7 +15,7 @@ class Deposit extends React.Component {
                     Amount to deposit:
                     <input type="number" name="deposit" />
                 </label>
-                <button>Deposit</button> 
+                <button onClick={this.props.handleDeposit}>Deposit</button> 
             </form>
         </div>
       );

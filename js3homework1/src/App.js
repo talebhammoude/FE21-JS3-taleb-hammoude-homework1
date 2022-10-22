@@ -5,15 +5,26 @@ import Spendlist from './Components/Spendlist';
 import Withdraw from './Components/Withdraw';
 
 function App() {
+
+
+  const handleDepositFunc = (e) => {
+    e.preventDefault();
+    console.log("Talangen");
+    setTimeout(()=>{
+      window.location.reload();
+    }, 500);
+}
+
+
   return (
     <div className="App">
       <header className="App-header">
 
-        <Deposit/>
+        <Deposit handleDeposit = {handleDepositFunc}/>
         <Withdraw/>
         <Info/>
         <Spendlist/>
-        
+
       </header>
     </div>
   );
