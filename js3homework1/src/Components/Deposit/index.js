@@ -13,7 +13,7 @@ class Deposit extends React.Component {
             <form>
                 <label>
                     Amount to deposit:
-                    <input type="number" name="deposit" />
+                    <input className='depo' type="number" />
                 </label>
                 <button onClick={this.props.handleDeposit}>Deposit</button> 
             </form>

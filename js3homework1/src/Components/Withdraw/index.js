@@ -12,13 +12,13 @@ class Withdraw extends React.Component {
                 <form>
                     <label>
                         Expense name:
-                        <input type="text" name="expense" />
+                        <input className='exp' type="text"  />
                     </label>
                     <label>
                         Amount to withdraw:
-                        <input type="number" name="withdraw" />
+                        <input className='exp-amount' type="number"  />
                     </label>  
-                    <button>Withdraw</button> 
+                    <button onClick={this.props.handleWithdraw}>Withdraw</button> 
                 </form>
             </div>
           );
