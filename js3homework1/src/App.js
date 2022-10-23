@@ -7,6 +7,7 @@ import Withdraw from './Components/Withdraw';
 
 
 
+
 function App() {
 
 
@@ -29,7 +30,7 @@ function App() {
     const expenseNameInputValue = document.querySelector(".exp").value;
     const expenseAmountInputValue = document.querySelector(".exp-amount").value;
 
-    localStorage.setItem("withdraw", parseInt(localStorage.getItem("withdraw"))+parseInt(expenseAmountInputValue));
+    localStorage.setItem("withdrawn", parseInt(localStorage.getItem("withdraw"))+parseInt(expenseAmountInputValue));
     localStorage.setItem(expenseNameInputValue, expenseAmountInputValue);
 
     setTimeout(()=>{
@@ -47,7 +48,7 @@ function App() {
 
         <Deposit handleDeposit = {handleDepositFunc}/>
         <Withdraw handleWithdraw = {handleWithdrawFunc}/>
-        <Info getBudget = {localStorage.getItem("deposit")}   getWithdraw = {localStorage.getItem("withdraw")}/>
+        <Info getBudget = {localStorage.getItem("deposit")}   getWithdrawn = {localStorage.getItem("withdrawn")}/>
         <Spendlist/>
 
       </header>
