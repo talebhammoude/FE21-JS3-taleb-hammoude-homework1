@@ -32,7 +32,7 @@ function App() {
 
     setTimeout(()=>{
       window.location.reload();
-    }, 300);
+    }, 310);
 }
 
 
