@@ -11,6 +11,13 @@ import Withdraw from './Components/Withdraw';
 function App() {
 
 
+  if(localStorage.length === 0){
+    localStorage.setItem("deposit", 0);
+    localStorage.setItem("withdrawn", 0);
+  }
+
+
+
   const handleDepositFunc = (e) => {
     e.preventDefault();
     const depositInputValue = document.querySelector(".depo").value;
@@ -30,7 +37,7 @@ function App() {
     const expenseNameInputValue = document.querySelector(".exp").value;
     const expenseAmountInputValue = document.querySelector(".exp-amount").value;
 
-    localStorage.setItem("withdrawn", parseInt(localStorage.getItem("withdraw"))+parseInt(expenseAmountInputValue));
+    localStorage.setItem("withdrawn", parseInt(localStorage.getItem("withdrawn"))+parseInt(expenseAmountInputValue));
     localStorage.setItem(expenseNameInputValue, expenseAmountInputValue);
 
     setTimeout(()=>{
