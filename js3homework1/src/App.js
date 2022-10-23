@@ -12,11 +12,15 @@ function App() {
 
 
   if(localStorage.length === 0){
+    localStorage.setItem("expenses", JSON.stringify([{"name": "-" , "amount": "-"}]));
     localStorage.setItem("deposit", 0);
     localStorage.setItem("withdrawn", 0);
     localStorage.setItem("balance", 0);
+    
+    
   }
 
+  
 
 
   const handleDepositFunc = (e) => {
@@ -36,21 +40,33 @@ function App() {
 
   const handleWithdrawFunc = (e) => {
     e.preventDefault();
+
+    const expArr = JSON.parse(localStorage.getItem("expenses"));
+
     const expenseNameInputValue = document.querySelector(".exp").value;
     const expenseAmountInputValue = document.querySelector(".exp-amount").value;
     
+      localStorage.setItem("withdrawn", parseInt(localStorage.getItem("withdrawn"))+parseInt(expenseAmountInputValue));
+      localStorage.setItem("balance", parseInt(localStorage.getItem("balance"))- expenseAmountInputValue );
 
-    localStorage.setItem("withdrawn", parseInt(localStorage.getItem("withdrawn"))+parseInt(expenseAmountInputValue));
-    localStorage.setItem(expenseNameInputValue, expenseAmountInputValue);
+      expArr.push({"name": expenseNameInputValue, "amount": expenseAmountInputValue});
 
-    localStorage.setItem("balance", parseInt(localStorage.getItem("balance"))- expenseAmountInputValue );
+      localStorage.setItem("expenses", JSON.stringify(expArr));
+
+      console.log(JSON.parse(localStorage.getItem("expenses")));
 
 
-    setTimeout(()=>{
-      window.location.reload();
-    }, 300);
+      setTimeout(()=>{
+        window.location.reload();
+      }, 300);
+
+
+
 
   }
+
+
+  
 
 
 
@@ -62,7 +78,7 @@ function App() {
         <Deposit handleDeposit = {handleDepositFunc}/>
         <Withdraw handleWithdraw = {handleWithdrawFunc}/>
         <Info getBudget = {localStorage.getItem("deposit")}   getWithdrawn = {localStorage.getItem("withdrawn")}    getBalance = {localStorage.getItem("balance")}/>
-        <Spendlist/>
+        <Spendlist  theList = {JSON.parse(localStorage.getItem("expenses"))}/>
 
       </header>
     </div>

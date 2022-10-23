@@ -4,8 +4,26 @@ import '../Spendlist/styles.css'
 
 class Spendlist extends React.Component {
 
+
+
     
     render() {
+
+      const expensesArr = this.props.theList;
+     
+      const listItems = expensesArr.map((exp) => {
+        return(
+          <tr>
+            <td>{exp.name}</td>
+            <td>{exp.amount}</td>
+        </tr>
+        )
+        
+      })
+
+
+
+
       return (
         <div>
             <table>
@@ -13,10 +31,7 @@ class Spendlist extends React.Component {
                     <th className='th'>Name</th>
                     <th className='th'>Amount</th>
                 </tr>
-                <tr>
-                    <td>Milk</td>
-                    <td>10</td>
-                </tr>
+                {listItems}
             </table>
         </div>
       )
