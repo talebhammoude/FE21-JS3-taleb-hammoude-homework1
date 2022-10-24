@@ -45,7 +45,7 @@ function App() {
     const expenseAmountInputValue = document.querySelector(".exp-amount").value;
     
 
-    if(document.querySelector(".exp-amount").value < parseInt(document.querySelector(".balance").innerHTML)) {
+    if(document.querySelector(".exp-amount").value <= parseInt(document.querySelector(".balance").innerHTML)) {
 
       localStorage.setItem("withdrawn", parseInt(localStorage.getItem("withdrawn"))+parseInt(expenseAmountInputValue));
       localStorage.setItem("balance", parseInt(localStorage.getItem("balance"))- expenseAmountInputValue );
