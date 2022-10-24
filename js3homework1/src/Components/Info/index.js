@@ -8,9 +8,23 @@ class Info extends React.Component {
     render() {
       return (
         <div>
-            <h5 className='budget'>Budget: {this.props.getBudget}</h5>
-            <h5 className='withdrawn'>Withdrawn:  {this.props.getWithdrawn}</h5>
-            <h5 className='balance'  value={this.props.getBalance}>Balance: {this.props.getBalance}</h5>
+
+          <div style={{marginTop:40}}>
+            <label>Budget: </label>
+            <span className='budget'>{this.props.getBudget}</span>
+          </div>
+            
+          <div>
+            <label>Withdrawn: </label>
+            <span className='withdrawn'>{this.props.getWithdrawn}</span>
+          </div>
+
+          <div>
+            <label>Balance: </label>
+            <span className='balance'>{this.props.getBalance}</span>
+          </div>
+            
+            
         </div>
       );
     }

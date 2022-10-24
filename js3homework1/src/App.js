@@ -16,8 +16,6 @@ function App() {
     localStorage.setItem("deposit", 0);
     localStorage.setItem("withdrawn", 0);
     localStorage.setItem("balance", 0);
-    
-    
   }
 
   
@@ -46,6 +44,9 @@ function App() {
     const expenseNameInputValue = document.querySelector(".exp").value;
     const expenseAmountInputValue = document.querySelector(".exp-amount").value;
     
+
+    if(document.querySelector(".exp-amount").value < parseInt(document.querySelector(".balance").innerHTML)) {
+
       localStorage.setItem("withdrawn", parseInt(localStorage.getItem("withdrawn"))+parseInt(expenseAmountInputValue));
       localStorage.setItem("balance", parseInt(localStorage.getItem("balance"))- expenseAmountInputValue );
 
@@ -59,6 +60,13 @@ function App() {
       setTimeout(()=>{
         window.location.reload();
       }, 300);
+
+    } else {
+      alert("You dont have enough money!")
+    }
+
+
+      
 
 
 
