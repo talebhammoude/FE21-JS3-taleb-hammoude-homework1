@@ -43,26 +43,42 @@ function App() {
 
     const expenseNameInputValue = document.querySelector(".exp").value;
     const expenseAmountInputValue = document.querySelector(".exp-amount").value;
+
+    const newArr = []
+
+    expArr.forEach(element => {
+      newArr.push(Object.values(element))
+    });
+
+    const myMap = new Map (newArr)
+
     
 
     if(document.querySelector(".exp-amount").value <= parseInt(document.querySelector(".balance").innerHTML)) {
 
-      localStorage.setItem("withdrawn", parseInt(localStorage.getItem("withdrawn"))+parseInt(expenseAmountInputValue));
-      localStorage.setItem("balance", parseInt(localStorage.getItem("balance"))- expenseAmountInputValue );
+      if(!myMap.has(expenseNameInputValue)){
 
-      expArr.push({"name": expenseNameInputValue, "amount": expenseAmountInputValue});
+        localStorage.setItem("withdrawn", parseInt(localStorage.getItem("withdrawn"))+parseInt(expenseAmountInputValue));
+        localStorage.setItem("balance", parseInt(localStorage.getItem("balance"))- expenseAmountInputValue );
 
-      localStorage.setItem("expenses", JSON.stringify(expArr));
+        expArr.push({"name": expenseNameInputValue, "amount": expenseAmountInputValue});
 
-      console.log(JSON.parse(localStorage.getItem("expenses")));
+        localStorage.setItem("expenses", JSON.stringify(expArr));
+
+        console.log(JSON.parse(localStorage.getItem("expenses")));
 
 
-      setTimeout(()=>{
-        window.location.reload();
-      }, 300);
+        setTimeout(()=>{
+          window.location.reload();
+        }, 300);
+        }else {
+          alert("Already exist!")
+        }
+
 
     } else {
       alert("You dont have enough money!")
+      console.log();
     }
 
 
